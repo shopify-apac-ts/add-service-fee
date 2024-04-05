@@ -81,9 +81,10 @@ function Extension() {
 
   if (payment_type == 'creditCard') {
     return(
-      <Banner>
-        カード支払いには、5%の手数料が上乗せされます 
-      </Banner>
+      <Banner
+        status="critical"
+        title="5% SERVICE FEE WILL BE ADDED TO CREDIT CARD PAYMENTS"
+      />
     );
   }
 
