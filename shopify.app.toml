@@ -3,7 +3,7 @@
 client_id = "3502b2367f49c18f952b9f200ba21324"
 name = "add-service-fee-on-card"
 handle = "add-service-fee-on-card"
-application_url = "https://myself-army-mom-war.trycloudflare.com"
+application_url = "https://rounds-hop-save-virgin.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://myself-army-mom-war.trycloudflare.com/auth/callback",
-  "https://myself-army-mom-war.trycloudflare.com/auth/shopify/callback",
-  "https://myself-army-mom-war.trycloudflare.com/api/auth/callback"
+  "https://rounds-hop-save-virgin.trycloudflare.com/auth/callback",
+  "https://rounds-hop-save-virgin.trycloudflare.com/auth/shopify/callback",
+  "https://rounds-hop-save-virgin.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

@@ -4,7 +4,8 @@ import {
   useApplyAttributeChange,
 //  useMetafield,
 //  useApplyMetafieldsChange,
-	useSelectedPaymentOptions,  
+	useSelectedPaymentOptions,
+  useSubtotalAmount,  
   reactExtension,
 } from '@shopify/ui-extensions-react/checkout';
 
@@ -51,18 +52,50 @@ function Extension() {
   console.log('attributes', attributes);
   
   const applyAttributeChange = useApplyAttributeChange();
+
   async function updatePaymentInAttribute() {
+    // Payment type
     const value = payment_type;
+
     const result = await applyAttributeChange({
       type: "updateAttribute",
       key: "payment_method",
       value,
     });
-    console.log('applyAttributeChange: ', result);
+//    console.log('applyAttributeChange: ', result);
+  }
+
+  const subtotal = useSubtotalAmount();
+  console.log('subtotal', subtotal);
+
+  async function updateCurrencyCode() {
+    // Subtotal currency code
+    const value = subtotal.currencyCode;
+
+    const result = await applyAttributeChange({
+      type: "updateAttribute",
+      key: "subtotal_currency_code",
+      value,
+    });
+//    console.log('updateCurrencyCode: ', result);
+}
+
+  async function updateAmount() {
+    // Subtotal amount
+    const value = subtotal.amount.toString();
+
+    const result = await applyAttributeChange({
+      type: "updateAttribute",
+      key: "subtotal_amount",
+      value,
+    });
+//    console.log('updateAmount: ', result);
   }
 
   if (attributes.length < 1) {
     updatePaymentInAttribute();
+    updateCurrencyCode();
+    updateAmount();
     console.log('attributes.length < 1');
   }    
 
@@ -71,7 +104,9 @@ function Extension() {
     console.log('attribute', attribute);
     if (attribute.key === 'payment_method' && attribute.value != payment_type) {
       updatePaymentInAttribute();
-    }
+      updateCurrencyCode();
+      updateAmount();
+      }
   }
 
 //  updatePaymentInAttribute();
